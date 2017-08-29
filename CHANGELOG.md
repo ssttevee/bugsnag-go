@@ -1,12 +1,14 @@
+# Changelog
+
 ## 1.2.2 (2017-08-25)
 
-### Bug fixes
+### Bug Fixes
 
 * Point osext dependency at upstream, update with fixes
 
 ## 1.2.1 (2017-07-31)
 
-### Bug fixes
+### Bug Fixes
 
 * Improve goroutine panic reporting by sending reports synchronously in the
   case that a goroutine is about to be cleaned up
@@ -24,7 +26,7 @@
   [Jascha Ephraim](https://github.com/jaschaephraim)
   [#51](https://github.com/bugsnag/bugsnag-go/pull/51)
 
-### Bug fixes
+### Bug Fixes
 
 * Mend nil pointer panic in metadata
   [Johan Sageryd](https://github.com/jsageryd)
@@ -32,7 +34,7 @@
 
 ## 1.1.1 (2016-12-16)
 
-### Bug fixes
+### Bug Fixes
 
 * Replace empty error class property in reports with "error"
 
@@ -56,31 +58,38 @@
   [Conrad Irwin](https://github.com/ConradIrwin)
   [#35](https://github.com/bugsnag/bugsnag-go/pull/35)
 
-## 1.0.5
+## 1.0.5 (2015-08-18)
 
-### Bug fixes
+### Bug Fixes
 
 * Avoid swallowing errors which occur upon delivery
 
-1.0.4
------
+## 1.0.4 (2015-05-28)
 
-- Fix appengine integration broken by 1.0.3
+### Bug Fixes
 
-1.0.3
------
+* Fix appengine integration broken by 1.0.3
 
-- Allow any Logger with a Printf method.
+## 1.0.3 (2015-02-12)
 
-1.0.2
------
+### Bug Fixes
 
-- Use bugsnag copies of dependencies to avoid potential link rot
+* Allow any Logger with a Printf method.
 
-1.0.1
------
+## 1.0.2 (2014-09-18)
 
-- gofmt/golint/govet docs improvements.
+### Bug Fixes
 
-1.0.0
------
+* Use bugsnag copies of dependencies to avoid potential link rot
+
+## 1.0.1
+
+### Bug Fixes
+
+* gofmt/golint/govet docs improvements.
+
+## 1.0.0 (2014-07-17)
+
+### Enhancements
+
+Initial release
