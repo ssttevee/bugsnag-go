@@ -1,0 +1,19 @@
+bump:
+  pre: # Update changelog entry
+    - vim CHANGELOG.md
+release:
+  pre: # Generate GitHub artefacts
+    - mkdir build
+    - tar -cvzf build/bugsnag.tar.gz *.go LICENSE.txt README.md
+    - tar -cvzf build/bugsnag-gin.tar.gz *.go gin LICENSE.txt README.md
+    - tar -cvzf build/bugsnag-negroni.tar.gz *.go negroni LICENSE.txt README.md
+    - tar -cvzf build/bugsnag-revel.tar.gz *.go revel LICENSE.txt README.md
+  git:
+    commit_format: Release v{version}
+    tag_format: v{version}
+  github:
+    artefacts:
+      - build/bugsnag.tar.gz
+      - build/bugsnag-gin.tar.gz
+      - build/bugsnag-negroni.tar.gz
+      - build/bugsnag-revel.tar.gz
