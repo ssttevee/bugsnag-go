@@ -28,7 +28,7 @@ var (
 func main() {
 	flag.Parse()
 	revel.Init(*runMode, *importPath, *srcPath)
-	revel.INFO.Println("Running revel server")
+	revel.AppLog.Info("Running revel server")
 	
 	revel.RegisterController((*controllers.Application)(nil),
 		[]*revel.MethodType{
@@ -110,7 +110,7 @@ func main() {
 					&revel.MethodArg{Name: "test", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
-					129: []string{ 
+					125: []string{ 
 					},
 				},
 			},
