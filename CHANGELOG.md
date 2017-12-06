@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0 (2017-12-06)
+
+### Enhancements
+
+* Add support for Revel v0.18
+  [#63](https://github.com/bugsnag/bugsnag-go/pull/63)
+  [Cameron Halter](https://github.com/EightB1ts)
+
 ## 1.3.0 (2017-10-02)
 
 ### Enhancements
