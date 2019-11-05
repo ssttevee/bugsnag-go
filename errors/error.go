@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"reflect"
 	"runtime"
+
+	"github.com/pkg/errors"
 )
 
 // The maximum number of stackframes on any error.
@@ -33,6 +35,11 @@ type ErrorWithStackFrames interface {
 	StackFrames() []StackFrame
 }
 
+type ErrorWithStackTrace interface {
+	Error() string
+	StackTrace() errors.StackTrace
+}
+
 // New makes an Error from the given value. If that value is already an
 // error then it will be used directly, if not, it will be passed to
 // fmt.Errorf("%v"). The skip parameter indicates how far up the stack
@@ -57,6 +64,17 @@ func New(e interface{}, skip int) *Error {
 			Err:    e,
 			stack:  stack,
 			frames: e.StackFrames(),
+		}
+	case ErrorWithStackTrace:
+		trace := e.StackTrace()
+		stack := make([]uintptr, len(trace))
+		for i, frame := range trace {
+			stack[i] = uintptr(frame)
+		}
+
+		return &Error{
+			Err:   e,
+			stack: stack,
 		}
 	case error:
 		err = e
@@ -120,7 +138,7 @@ func (err *Error) TypeName() string {
 	if _, ok := err.Err.(uncaughtPanic); ok {
 		return "panic"
 	}
-	if name := reflect.TypeOf(err.Err).String(); len(name) > 0 {
+	if name := reflect.TypeOf(errors.Cause(err.Err)).String(); len(name) > 0 {
 		return name
 	}
 	return "error"
